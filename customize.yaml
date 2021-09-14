@@ -1,0 +1,12 @@
+sensor.bitfetch_btcusd:
+  friendly_name: Bitcoin in USD
+  unit_of_measurement: $
+sensor.bitfetch_ethusd:
+  friendly_name: Ethereum in USD
+  unit_of_measurement: $
+sensor.bitfetch_xmrusd:
+  friendly_name: Monero in USD
+  unit_of_measurement: $
+sensor.bitfetch_xrpusd:
+  friendly_name: Ripple in USD
+  unit_of_measurement: $

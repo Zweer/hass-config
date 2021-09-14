@@ -1,0 +1,12 @@
+  covers:
+    name: Tapparelle
+    entities:
+      - cover.tapparella_camera
+      - cover.tapparella_cameretta
+      - cover.tapparella_bagno
+      - cover.tapparella_cucina
+  lights:
+    name: Luci
+    entities:
+      - light.led_sala
+      - switch.pino

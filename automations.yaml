@@ -1,0 +1,64 @@
+- id: '1605544553730'
+  alias: Turn on "Led Sala" when the sun is set
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:45:00
+  condition:
+  - condition: state
+    entity_id: person.niccolo_olivieri_achille
+    state: Home
+  action:
+  - domain: light
+    entity_id: light.led_sala
+    device_id: c0bb7047269011eb8be8353269238df6
+    type: turn_on
+  mode: single
+- id: '1608305540282'
+  alias: Commute to GioGio - Update on saturday morning
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /10
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: 09:00:00
+    weekday:
+    - sat
+  action:
+  - service: homeassistant.update_entity
+    data: {}
+    entity_id: sensor.commute_giogio
+  mode: single
+- id: '1611245938763'
+  alias: Google Assistant Sync
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - service: google_assistant.request_sync
+    data:
+      agent_user_id: 4b75bad3c8b14355af94d6e45ca94f56
+- id: '1614706313717'
+  alias: Open covers at 8:30 when I'm at home
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:30:00
+  condition:
+  - condition: state
+    entity_id: person.niccolo_olivieri_achille
+    state: Home
+  action:
+  - device_id: b0ddb1bf174e15d32d5206e18ef37289
+    domain: cover
+    entity_id: cover.shelly_tapparella_camera
+    type: set_position
+    position: 100
+  - service: notify.mobile_app_nic_s_poco
+    data:
+      title: Svegliaaaaaaa
+  mode: single

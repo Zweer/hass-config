@@ -1,0 +1,52 @@
+- id: '1608739532175'
+  name: Home - OFF
+  entities:
+    light.led_sala:
+      friendly_name: Led Sala
+      icon: mdi:led-strip-variant
+      state: 'off'
+    switch.pino:
+      friendly_name: Pino
+      icon: mdi:floor-lamp-variant
+      state: 'off'
+    switch.ventole:
+      friendly_name: Ventole
+      icon: mdi:fan
+      state: 'off'
+    cover.shelly_tapparella_bagno:
+      current_position: 0
+      friendly_name: Tapparella Bagno
+      state: closed
+    cover.shelly_tapparella_camera:
+      current_position: 0
+      friendly_name: Tapparella Camera
+      state: closed
+    cover.shelly_tapparella_cameretta:
+      current_position: 0
+      friendly_name: Tapparella Cameretta
+      state: closed
+    cover.shelly_tapparella_cucina:
+      current_position: 0
+      friendly_name: Tapparella Cucina
+      state: closed
+  icon: mdi:home-export-outline
+- id: '1608739590409'
+  name: Home - ON
+  entities:
+    cover.shelly_tapparella_bagno:
+      current_position: 100
+      friendly_name: Tapparella Bagno
+      state: open
+    cover.shelly_tapparella_camera:
+      current_position: 100
+      friendly_name: Tapparella Camera
+      state: open
+    cover.shelly_tapparella_cameretta:
+      current_position: 100
+      friendly_name: Tapparella Cameretta
+      state: open
+    cover.shelly_tapparella_cucina:
+      current_position: 100
+      friendly_name: Tapparella Cucina
+      state: open
+  icon: mdi:home-import-outline

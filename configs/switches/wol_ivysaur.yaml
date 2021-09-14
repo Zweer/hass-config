@@ -1,0 +1,9 @@
+platform: wake_on_lan
+mac: '48:5B:39:12:D6:6A'
+name: Ivysaur
+host: 192.168.12.34
+turn_off: 
+  service: hassio.addon_stdin
+  data:
+    addon: core_rpc_shutdown
+    input: Ivysaur

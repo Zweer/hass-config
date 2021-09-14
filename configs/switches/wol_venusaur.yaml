@@ -1,0 +1,9 @@
+platform: wake_on_lan
+mac: '24:4B:FE:55:F8:0D'
+name: Venusaur
+host: 192.168.12.35
+turn_off: 
+  service: hassio.addon_stdin
+  data:
+    addon: core_rpc_shutdown
+    input: Venusaur

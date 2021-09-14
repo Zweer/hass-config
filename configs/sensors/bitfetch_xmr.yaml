@@ -1,0 +1,4 @@
+platform: bitfetch
+pair: XMRUSD
+api_key: !secret bitfetch_api_key
+scan_interval: 1800
