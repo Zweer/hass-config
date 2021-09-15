@@ -1,31 +1,25 @@
 sensor:
-
-  bitfetch_btc:
-    platform: bitfetch
+  - platform: bitfetch
     pair: BTCUSD
     api_key: !secret bitfetch_api_key
     scan_interval: 1800
 
-  bitfetch_eth:
-    platform: bitfetch
+  - platform: bitfetch
     pair: ETHUSD
     api_key: !secret bitfetch_api_key
     scan_interval: 1800
 
-  bitfetch_xmr:
-    platform: bitfetch
+  - platform: bitfetch
     pair: XMRUSD
     api_key: !secret bitfetch_api_key
     scan_interval: 1800
 
-  bitfetch_xrp:
-    platform: bitfetch
+  - platform: bitfetch
     pair: XRPUSD
     api_key: !secret bitfetch_api_key
     scan_interval: 1800
     
-  bitfetch_my_crypto:
-    platform: template
+  - platform: template
     sensors:
       bitfetch_btc_usd:
         friendly_name: BTC

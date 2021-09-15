@@ -1,7 +1,5 @@
 sensor:
-
-  device_nidoran:
-    platform: qnap
+  - platform: qnap
     host: !secret device_nidoran_host
     username: !secret device_nidoran_username
     password: !secret device_nidoran_password
@@ -22,8 +20,7 @@ sensor:
       - volume_size_used
       - volume_percentage_used
 
-  device_raspberry_hassio:
-    platform: systemmonitor
+  - platform: systemmonitor
     resources:
       - type: disk_use_percent
         arg: /

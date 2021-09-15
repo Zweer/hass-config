@@ -1,6 +1,5 @@
 sensor:
-  boiler:
-    platform: template
+  - platform: template
     sensors:
       boiler:
         value_template: >-
