@@ -4,7 +4,7 @@ google:
   
 google_assistant:
   project_id: !secret google_assistant_project_id
-  service_account: !include google_assistant-service_account.json
+  service_account: !include ../google_assistant-service_account.json
   report_state: true
   exposed_domains:
     - alarm_control_panel
