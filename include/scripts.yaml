@@ -1,0 +1,4 @@
+shell_command:
+  turn_off_via_ssh: ssh -F /config/ssh_config -i /config/id_rsa {{ username }}@{{ host }} 'poweroff'
+  git_pull: cd /config && git pull
+  git_push: cd /config && git add . && git commit -m "config files on `date +'%d-%m-%Y %H:%M:%S'`" && git push
