@@ -1,0 +1,26 @@
+google:
+  client_id: !secret google_api_calendar_id
+  client_secret: !secret google_api_calendar_secret
+  
+google_assistant:
+  project_id: !secret google_assistant_project_id
+  service_account: !include google_assistant-service_account.json
+  report_state: true
+  exposed_domains:
+    - alarm_control_panel
+    - camera
+    - group
+    - input_boolean
+    - input_select
+    - scene
+    - script
+    - switch
+    - fan
+    - light
+    - lock
+    - cover
+    - media_player
+    - climate
+    - vacuum
+    - sensor
+    - humidifier

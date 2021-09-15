@@ -1,0 +1,35 @@
+switch:
+
+  wol_ivysaur:
+    platform: wake_on_lan
+    mac: '48:5B:39:12:D6:6A'
+    name: Ivysaur
+    host: 192.168.12.34
+    turn_off: 
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: Ivysaur
+
+  wol_nidoran:
+    platform: wake_on_lan
+    mac: '00:08:9B:F7:F3:E9'
+    name: Nidoran
+    host: !secret device_nidoran_host
+    turn_off:
+      service: shell_command.turn_off_via_ssh
+      data:
+        username: !secret device_nidoran_username
+        host: !secret device_nidoran_host
+
+  wol_venusaur:
+    platform: wake_on_lan
+    mac: '24:4B:FE:55:F8:0D'
+    name: Venusaur
+    host: 192.168.12.35
+    turn_off: 
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: Venusaur
+

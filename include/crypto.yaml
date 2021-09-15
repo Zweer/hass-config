@@ -1,0 +1,50 @@
+sensor:
+
+  bitfetch_btc:
+    platform: bitfetch
+    pair: BTCUSD
+    api_key: !secret bitfetch_api_key
+    scan_interval: 1800
+
+  bitfetch_eth:
+    platform: bitfetch
+    pair: ETHUSD
+    api_key: !secret bitfetch_api_key
+    scan_interval: 1800
+
+  bitfetch_xmr:
+    platform: bitfetch
+    pair: XMRUSD
+    api_key: !secret bitfetch_api_key
+    scan_interval: 1800
+
+  bitfetch_xrp:
+    platform: bitfetch
+    pair: XRPUSD
+    api_key: !secret bitfetch_api_key
+    scan_interval: 1800
+    
+  bitfetch_my_crypto:
+    platform: template
+    sensors:
+      bitfetch_btc_usd:
+        friendly_name: BTC
+        unit_of_measurement: "$"
+        value_template: "{{ (states('sensor.bitfetch_btcusd')|float * states('input_number.cryptocurr_btc')|float)|round }}"
+      bitfetch_eth_usd:
+        friendly_name: ETH
+        unit_of_measurement: "$"
+        value_template: "{{ (states('sensor.bitfetch_ethusd')|float * states('input_number.cryptocurr_eth')|float)|round }}"
+      bitfetch_xmr_usd:
+        friendly_name: XMR
+        unit_of_measurement: "$"
+        value_template: "{{ (states('sensor.bitfetch_xmrusd')|float * states('input_number.cryptocurr_xmr')|float)|round }}"
+      bitfetch_xrp_usd:
+        friendly_name: XRP
+        unit_of_measurement: "$"
+        value_template: "{{ (states('sensor.bitfetch_xrpusd')|float * states('input_number.cryptocurr_xrp')|float)|round }}"
+      bitfetch_usd:
+        friendly_name: Crypto total
+        unit_of_measurement: "$"
+        value_template: "{{ states('sensor.bitfetch_btc_usd')|float + states('sensor.bitfetch_eth_usd')|float + states('sensor.bitfetch_xmr_usd')|float + states('sensor.bitfetch_xrp_usd')|float }}"
+        

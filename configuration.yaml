@@ -11,7 +11,7 @@ tts:
   - platform: google_translate
   
 homeassistant:
-  packages: !include_dir_named configs/packages
+  packages: !include_dir_named include
   customize: !include customize.yaml
 
 frontend:
@@ -21,30 +21,13 @@ frontend:
 #   default: debug
 
 automation: !include automations.yaml
-binary_sensor: !include_dir_list configs/binary_sensors
-cover: !include_dir_list configs/covers
+# binary_sensor: !include_dir_list configs/binary_sensors
+# cover: !include_dir_list configs/covers
 group: !include groups.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
-sensor: !include_dir_list configs/sensors
-switch: !include_dir_list configs/switches
-
-lovelace:
-  mode: storage
-  dashboards:
-    lovelace-devices:
-      mode: yaml
-      filename: lovelace/devices/ui.yaml
-      title: Devices
-      show_in_sidebar: true
-      require_admin: false
-    lovelace-tablet:
-      mode: yaml
-      filename: lovelace/tablet/ui.yaml
-      title: Tablet
-      icon: mdi:tablet-dashboard
-      show_in_sidebar: true
-      require_admin: false
+# sensor: !include_dir_list configs/sensors
+# switch: !include_dir_list configs/switches
 
 influxdb:
   host: a0d7b954-influxdb
@@ -64,91 +47,7 @@ browser_mod:
 
 api:
 
-google:
-  client_id: !secret google_api_calendar_id
-  client_secret: !secret google_api_calendar_secret
-  
-google_assistant:
-  project_id: !secret google_assistant_project_id
-  service_account: !include google_assistant-service_account.json
-  report_state: true
-  exposed_domains:
-    - alarm_control_panel
-    - camera
-    - group
-    - input_boolean
-    - input_select
-    - scene
-    - script
-    - switch
-    - fan
-    - light
-    - lock
-    - cover
-    - media_player
-    - climate
-    - vacuum
-    - sensor
-    - humidifier
-
-alexa:
-  smart_home:
-    filter:
-      exclude_entities:
-        - media_player.casa
-        - media_player.echo_bagnetto
-        - media_player.echo_camera
-        - media_player.echo_cucina
-        - media_player.echo_plus
-        - media_player.this_device
-        - sensor.echo_bagnetto_next_alarm
-        - sensor.echo_bagnetto_next_reminder
-        - sensor.echo_bagnetto_next_timer
-        - sensor.echo_camera_next_alarm
-        - sensor.echo_camera_next_reminder
-        - sensor.echo_camera_next_timer
-        - sensor.echo_cucina_next_alarm
-        - sensor.echo_cucina_next_reminder
-        - sensor.echo_cucina_next_timer
-        - sensor.echo_plus_next_alarm
-        - sensor.echo_plus_next_reminder
-        - sensor.echo_plus_next_timer
-        - sensor.this_device_next_alarm
-        - sensor.this_device_next_reminder
-        - sensor.this_device_next_timer
-        - switch.casa_do_not_disturb_switch
-        - switch.casa_repeat_switch
-        - switch.casa_shuffle_switch
-        - switch.echo_bagnetto_do_not_disturb_switch
-        - switch.echo_bagnetto_repeat_switch
-        - switch.echo_bagnetto_shuffle_switch
-        - switch.echo_camera_do_not_disturb_switch
-        - switch.echo_camera_repeat_switch
-        - switch.echo_camera_shuffle_switch
-        - switch.echo_cucina_do_not_disturb_switch
-        - switch.echo_cucina_repeat_switch
-        - switch.echo_cucina_shuffle_switch
-        - switch.echo_plus_do_not_disturb_switch
-        - switch.echo_plus_repeat_switch
-        - switch.echo_plus_shuffle_switch
-        - switch.this_device_do_not_disturb_switch
-
 shell_command:
   turn_off_via_ssh: ssh -F /config/ssh_config -i /config/id_rsa {{ username }}@{{ host }} 'poweroff'
   git_pull: cd /config && git pull
   git_push: cd /config && git add . && git commit -m "config files on `date +'%d-%m-%Y %H:%M:%S'`" && git push
-
-telegram_bot:
-  - platform: webhooks
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret telegram_chat_id_zweer
-
-notify:
-  - platform: telegram
-    name: zweer
-    chat_id: !secret telegram_chat_id_zweer
-
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
