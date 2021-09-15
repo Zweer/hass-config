@@ -1,0 +1,284 @@
+icon: mdi:home-thermometer
+panel: false
+path: climate
+badges: []
+cards:
+  - type: entities
+    entities:
+      - entity: input_select.central_boiler
+  - type: custom:mini-graph-card
+    name: External
+    points_per_hour: 2
+    hour24: true
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    line_width: 3
+    entities:
+      - entity: sensor.openweathermap_temperature
+        name: Temperature
+        color: '#FF9800'
+      - entity: sensor.openweathermap_humidity
+        name: Humidity
+        color: '#3498DB'
+        y_axis: secondary
+        min: 0
+        max: 100
+    show:
+      labels: true
+      legend: false
+      fill: fade
+  - type: weather-forecast
+    entity: weather.openweathermap
+    secondary_info_attribute: wind_speed
+  - type: custom:mini-graph-card
+    name: Sala
+    points_per_hour: 2
+    hour24: true
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    line_width: 3
+    entities:
+      - entity: sensor.ac_sala_temperature
+        name: AC
+        color: '#FFC400'
+      - entity: sensor.ac_sala_humidity
+        name: AC
+        color: '#34CDDB'
+        y_axis: secondary
+      - entity: sensor.sala_temperature
+        name: Thermo
+        color: '#FF9800'
+      - entity: sensor.sala_temperature_humidity
+        name: Thermo
+        color: '#3498DB'
+        y_axis: secondary
+      - color: red
+        entity: sensor.sala_heating
+        name: Heating
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: blue
+        entity: sensor.ac_sala_ac
+        name: Heating
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: gray
+        entity: sensor.boiler
+        name: Boiler
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    show:
+      labels: true
+      legend: false
+      fill: fade
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Sala
+        card:
+          type: horizontal-stack
+          cards:
+            - type: thermostat
+              entity: climate.sala
+            - type: thermostat
+              entity: climate.ac_sala
+  - type: custom:mini-graph-card
+    name: Camera
+    points_per_hour: 2
+    hour24: true
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    line_width: 3
+    entities:
+      - entity: sensor.ac_camera_temperature
+        name: AC
+        color: '#FFC400'
+      - entity: sensor.ac_camera_humidity
+        name: AC
+        color: '#34CDDB'
+        y_axis: secondary
+      - entity: sensor.camera_da_letto_temperature
+        name: Thermo
+        color: '#FF9800'
+      - entity: sensor.camera_da_letto_humidity
+        name: Thermo
+        color: '#3498DB'
+        y_axis: secondary
+      - color: red
+        entity: sensor.camera_da_letto_heating
+        name: Heating
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: blue
+        entity: sensor.ac_camera_ac
+        name: ACing
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: gray
+        entity: sensor.boiler
+        name: Boiler
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    show:
+      labels: true
+      legend: false
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Camera
+        card:
+          type: horizontal-stack
+          cards:
+            - type: thermostat
+              entity: climate.camera_da_letto
+            - type: thermostat
+              entity: climate.ac_camera
+      fill: fade
+  - type: custom:mini-graph-card
+    name: Cameretta
+    points_per_hour: 2
+    hour24: true
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    line_width: 3
+    entities:
+      - entity: sensor.ac_cameretta_temperature
+        name: AC
+        color: '#FFC400'
+      - entity: sensor.ac_cameretta_humidity
+        name: AC
+        color: '#34CDDB'
+        y_axis: secondary
+      - entity: sensor.cameretta_temperature
+        name: Thermo
+        color: '#FF9800'
+      - entity: sensor.cameretta_humidity
+        name: Thermo
+        color: '#3498DB'
+        y_axis: secondary
+      - color: red
+        entity: sensor.cameretta_heating
+        name: Heating
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: blue
+        entity: sensor.ac_cameretta_ac
+        name: Heating
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: gray
+        entity: sensor.boiler
+        name: Boiler
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    show:
+      labels: true
+      legend: false
+      fill: fade
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Cameretta
+        card:
+          type: horizontal-stack
+          cards:
+            - type: thermostat
+              entity: climate.cameretta
+            - type: thermostat
+              entity: climate.ac_cameretta
+  - type: custom:mini-graph-card
+    name: Studio
+    points_per_hour: 2
+    hour24: true
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    line_width: 3
+    entities:
+      - entity: sensor.studio_temperature
+        name: Thermo
+        color: '#FF9800'
+      - entity: sensor.studio_humidity
+        name: Thermo
+        color: '#3498DB'
+        y_axis: secondary
+      - color: red
+        entity: sensor.studio_heating
+        name: Heating
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+      - color: gray
+        entity: sensor.boiler
+        name: Boiler
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    show:
+      labels: true
+      legend: false
+      fill: fade
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Studio
+        card:
+          type: thermostat
+          entity: climate.studio
+  - type: custom:mini-graph-card
+    name: Cucina
+    points_per_hour: 2
+    hour24: true
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    line_width: 3
+    entities:
+      - entity: sensor.ac_cucina_temperature
+        name: AC
+        color: '#FFC400'
+      - entity: sensor.ac_cucina_humidity
+        name: AC
+        color: '#34CDDB'
+        y_axis: secondary
+      - color: blue
+        entity: sensor.ac_camera_ac
+        name: ACing
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    show:
+      labels: true
+      legend: false
+      fill: fade
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Cucina
+        card:
+          type: thermostat
+          entity: climate.ac_cucina

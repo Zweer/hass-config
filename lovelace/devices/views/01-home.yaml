@@ -1,0 +1,125 @@
+path: home
+icon: mdi:home-outline
+panel: false
+badges:
+  - entity: person.niccolo_olivieri_achille
+    name: nic
+cards:
+  - type: custom:config-template-card
+    entities:
+      - light.palla
+      - light.led_sala
+      - switch.pino
+      - switch.ventole
+      - cover.tapparella_bagno
+      - cover.tapparella_camera
+      - cover.tapparella_cameretta
+      - cover.tapparella_cucina
+    card:
+      type: picture-elements
+      elements:
+        - type: custom:button-card
+          entity: light.palla
+          style:
+            top: 11%
+            left: 62%
+          template:
+            - light
+            - icon
+        - type: custom:button-card
+          entity: light.led_sala
+          style:
+            top: 65%
+            left: 52.8%
+          template:
+            - light
+            - icon
+        - type: custom:button-card
+          entity: switch.pino
+          style:
+            top: 91%
+            left: 69%
+          template:
+            - switch
+            - icon
+        - type: custom:button-card
+          entity: switch.ventole
+          style:
+            top: 41%
+            left: 11%
+          template:
+            - switch
+            - icon
+        - type: custom:button-card
+          entity: cover.shelly_tapparella_bagno
+          style:
+            top: 8%
+            left: 48.5%
+          template:
+            - cover
+            - icon
+        - type: custom:button-card
+          entity: cover.shelly_tapparella_camera
+          style:
+            top: 25%
+            left: 92%
+          template:
+            - cover
+            - icon
+        - type: custom:button-card
+          entity: cover.shelly_tapparella_cameretta
+          style:
+            top: 8%
+            left: 26%
+          template:
+            - cover
+            - icon
+        - type: custom:button-card
+          entity: camera.ipcam_cameretta
+          style:
+            top: 8%
+            left: 17%
+          template:
+            - icon
+        - type: custom:button-card
+          entity: camera.ipcam_camera
+          style:
+            top: 8%
+            left: 86%
+          template:
+            - icon
+        - type: custom:button-card
+          entity: cover.shelly_tapparella_cucina
+          style:
+            top: 51%
+            left: 92%
+          template:
+            - cover
+            - icon
+        - type: custom:button-card
+          icon: mdi:home-import-outline
+          name: Home - ON
+          style:
+            top: 84%
+            left: 10%
+          template:
+            - icon
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.home_on
+        - type: custom:button-card
+          icon: mdi:home-export-outline
+          name: Home - OFF
+          style:
+            top: 91%
+            left: 10%
+          template:
+            - icon
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.home_off
+      image: /local/ui/floorplan/apartment.png

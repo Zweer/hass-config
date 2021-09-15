@@ -1,0 +1,34 @@
+icon: mdi:bitcoin
+path: crypto
+badges: []
+cards:
+  - type: entities
+    entities:
+      - input_number.cryptocurr_btc
+      - input_number.cryptocurr_eth
+      - input_number.cryptocurr_xmr
+      - input_number.cryptocurr_xrp
+  - type: entities
+    entities:
+      - sensor.bitfetch_btcusd
+      - sensor.bitfetch_ethusd
+      - sensor.bitfetch_xmrusd
+      - sensor.bitfetch_xrpusd
+  - type: entities
+    entities:
+      - entity: sensor.bitfetch_btc_usd
+      - entity: sensor.bitfetch_eth_usd
+      - entity: sensor.bitfetch_xmr_usd
+      - entity: sensor.bitfetch_xrp_usd
+      - entity: sensor.bitfetch_usd
+  - type: custom:mini-graph-card
+    name: Crypto
+    points_per_hour: 2
+    hour24: true
+    line_width: 3
+    entities:
+      - entity: sensor.bitfetch_usd
+        name: Total
+    show:
+      labels: true
+      fill: fade

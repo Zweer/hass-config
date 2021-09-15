@@ -29,6 +29,23 @@ script: !include scripts.yaml
 sensor: !include_dir_list configs/sensors
 switch: !include_dir_list configs/switches
 
+lovelace:
+  mode: storage
+  dashboards:
+    lovelace-devices:
+      mode: yaml
+      filename: lovelace/devices/ui.yaml
+      title: Devices
+      show_in_sidebar: true
+      require_admin: false
+    lovelace-tablet:
+      mode: yaml
+      filename: lovelace/tablet/ui.yaml
+      title: Tablet
+      icon: mdi:tablet-dashboard
+      show_in_sidebar: true
+      require_admin: false
+
 influxdb:
   host: a0d7b954-influxdb
   port: 8086

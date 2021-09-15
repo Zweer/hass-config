@@ -1,0 +1,124 @@
+icon: mdi:server
+path: server
+badges:
+  - entity: binary_sensor.updater
+  - entity: binary_sensor.updater_supervisor
+  - entity: binary_sensor.updater_addons
+  - entity: binary_sensor.updater_hacs
+  - entity: binary_sensor.updater_host
+  - entity: switch.nidoran
+    type: state-label
+    tap_action:
+      action: toggle
+  - entity: switch.venusaur
+    type: state-label
+    tap_action:
+      action: toggle
+cards:
+  - type: custom:mini-graph-card
+    name: Hassio
+    points_per_hour: 2
+    hour24: true
+    lower_bound: 0
+    upper_bound: 100
+    lower_bound_secondary: 0
+    upper_bound_secondary: 80
+    line_width: 3
+    entities:
+      - entity: sensor.processor_use
+        name: CPU
+      - entity: sensor.memory_use_percent
+        name: RAM
+      - entity: sensor.disk_use_percent
+        name: Disk
+      - entity: sensor.processor_temperature
+        name: Temp
+        y_axis: secondary
+    show:
+      labels: true
+      labels_secondary: true
+      fill: fade
+  - type: custom:mini-graph-card
+    name: Hassio Net
+    points_per_hour: 2
+    hour24: true
+    lower_bound: 0
+    line_width: 3
+    entities:
+      - entity: sensor.network_throughput_in_eth0
+        name: Download
+      - entity: sensor.network_throughput_out_eth0
+        name: Upload
+    show:
+      labels: true
+      labels_secondary: true
+      fill: fade
+  - type: custom:mini-graph-card
+    name: Nidoran
+    points_per_hour: 2
+    hour24: true
+    lower_bound: 0
+    upper_bound: 100
+    lower_bound_secondary: 0
+    upper_bound_secondary: 80
+    line_width: 3
+    entities:
+      - entity: sensor.nidoran_cpu_usage
+        name: CPU
+      - entity: sensor.nidoran_memory_usage
+        name: RAM
+      - entity: sensor.nidoran_volume_used_datavol1
+        name: Disk
+      - entity: sensor.nidoran_cpu_temperature
+        name: CPU Temp
+        y_axis: secondary
+      - entity: sensor.nidoran_system_temperature
+        name: Sys Temp
+        y_axis: secondary
+    show:
+      labels: true
+      labels_secondary: true
+      fill: fade
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        card:
+          type: iframe
+          url: https://zweer.myqnapcloud.com:8043/cgi-bin/
+  - type: custom:mini-graph-card
+    name: Nidoran Net
+    points_per_hour: 2
+    hour24: true
+    lower_bound: 0
+    line_width: 3
+    entities:
+      - entity: sensor.nidoran_network_down_eth0
+        name: Download
+      - entity: sensor.nidoran_network_up_eth0
+        name: Upload
+    show:
+      labels: true
+      labels_secondary: true
+      fill: fade
+  - type: custom:mini-graph-card
+    name: SpeedTest
+    points_per_hour: 1
+    hour24: true
+    line_width: 3
+    lower_bound: 0
+    upper_bound: 1000
+    lower_bound_secondary: 0
+    upper_bound_secondary: 100
+    entities:
+      - entity: sensor.speedtest_download
+        name: Download
+      - entity: sensor.speedtest_upload
+        name: Upload
+      - entity: sensor.speedtest_ping
+        name: Ping
+        y_axis: secondary
+    show:
+      labels: true
+      labels_secondary: true
+      fill: fade

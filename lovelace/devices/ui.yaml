@@ -1,0 +1,4 @@
+button_card_templates: !include button_card_templates.yaml
+
+title: Fumagalli
+views: !include_dir_list views/
