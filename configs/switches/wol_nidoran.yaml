@@ -1,9 +1,0 @@
-platform: wake_on_lan
-mac: '00:08:9B:F7:F3:E9'
-name: Nidoran
-host: !secret device_nidoran_host
-turn_off:
-  service: shell_command.turn_off_via_ssh
-  data:
-    username: !secret device_nidoran_username
-    host: !secret device_nidoran_host
