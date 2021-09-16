@@ -14,6 +14,11 @@ badges:
     type: state-label
     tap_action:
       action: toggle
+  - entity: sensor.github_repo_pull
+    type: state-label
+    tap_action:
+      action: call-service
+      service: script.pull_and_restart
 cards:
   - type: custom:mini-graph-card
     name: Hassio
