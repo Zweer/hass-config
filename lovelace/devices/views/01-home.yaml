@@ -4,6 +4,8 @@ panel: false
 badges:
   - entity: person.niccolo_olivieri_achille
     name: nic
+  - entity: media_player.spotify_niccolo_olivieri_achille
+    name: Spotify
 cards:
   - type: custom:config-template-card
     entities:
