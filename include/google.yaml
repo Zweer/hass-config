@@ -24,3 +24,9 @@ google_assistant:
     - vacuum
     - sensor
     - humidifier
+
+sensor:
+  - platform: google_fit
+    name: Niccolò
+    client_id: !secret google_api_calendar_id
+    client_secret: !secret google_api_calendar_secret
