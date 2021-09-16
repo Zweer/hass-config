@@ -1,0 +1,6 @@
+sensor:
+  - platform: command_line
+    name: Github Repo Pull
+    command: 'cd /config && git fetch && git rev-list main..origin/main --count'
+    unit_of_measurement: pull
+    value_template: "{{ value | int }}"
