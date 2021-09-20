@@ -1,0 +1,33 @@
+views:
+  - type: custom:grid-layout
+    path: 0
+    layout:
+      grid-gap: var(--custom-layout-card-padding)
+      grid-template-columns: repeat(4, 1fr) 0
+      grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+      grid-template-areas: |
+        "sidebar  .       .       .        ."
+        "sidebar  dining  studio  bedroom  ."
+        "sidebar  media   misc    home     ."
+        "sidebar  footer  footer  footer   ."
+    cards:
+      - type: vertical-stack
+        view_layout:
+          grid_area: sidebar
+        cards:
+          - type: custom:button-card
+            entity: sensor.sidebar
+            show_state: false
+            show_icon: false
+            tap_action:
+              action: none
+            name: |
+              [[[
+                if (entity) {
+                  let attributes = '';
+                  for (const [key, value] of Object.entries(entity.attributes)) {
+                    value != false ? attributes += `<p>${value}</p>` : null;
+                  }
+                  return attributes;
+                }
+              ]]]

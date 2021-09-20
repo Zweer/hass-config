@@ -1,0 +1,52 @@
+template:
+  sensor:
+    - unique_id: sidebar
+      state: template
+      attributes:
+        time: >
+          {% set hours = now().strftime('%H') %}
+          {% set minutes = now().strftime('%M') %}
+          <span class="time">
+            {{ hours }}<span class="time-colon">:</span>{{ minutes }}
+          </span>
+        date: |
+          <span class='date'>
+          {%- if now().day != null %}
+          {%- set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+          {%- set months = ['January', 'February', 'March', 'April', 'May', 'June', 
+          'July', 'August', 'September', 'October', 'November', 'December'] %}
+            {{- days[now().weekday()] }}<br>
+            {{- now.day }} {{ months[now().month - 1] }}
+          {%- endif -%}
+          </span>
+        greet: |
+          <b>
+          {%- set time = now().hour %}
+          {%- if time <= 1 -%} Good night {{'\U0001F611'}}
+          {%- elif time <= 3 -%} Good night {{'\U0001F62A'}}
+          {%- elif time <= 5 -%} Good night {{'\U0001F634'}}
+          {%- elif time <= 7 -%} Good morning {{'\U0001F4A9'}}
+          {%- elif time <= 9 -%} Good morning {{'\u2615\uFE0F'}}
+          {%- elif time <= 10 -%} Good morning {{'\U0001F642'}}
+          {%- elif time <= 13 -%} Good afternoon {{'\U0001F60A'}}
+          {%- elif time <= 15 -%} Good afternoon {{'\U0001F60E'}}
+          {%- elif time <= 17 -%} Good afternoon {{'\U0001F44B\U0001F3FB'}}
+          {%- elif time <= 19 -%} Good evening {{'\U0001F44B\U0001F3FB'}}
+          {%- elif time <= 22 -%} Good evening {{'\U0001F60C'}}
+          {%- elif time <= 23 -%} Good evening {{'\U0001F974'}}
+          {%- else %} Good evening {{'\U0001F974'}}
+          {%- endif -%}
+          </b>
+        weather: |
+          {%- set temperature = states('sensor.openweathermap_temperature') %}
+          {%- set apparent = states('sensor.openweathermap_feels_like_temperature') | round %}
+          {%- set precip = states('sensor.openweathermap_forecast_precipitation_probability') | round %}
+          {% if not is_state('sensor.openweathermap_temperature', 'unknown') %}
+            {%- if temperature | float <= 0.0 -%}
+              It feels {{ apparent }}° with {{ precip }}% risk of snow {{'\u2744\uFE0F'}}
+            {%- elif temperature | float > 0.0 -%} 
+              It feels {{ apparent }}° with {{ precip }}% risk of rain {{ '\u2614\uFE0F' if precip > 30 }}
+            {%- endif %}
+          {%- else %}
+            Can't load weather info...
+          {%- endif %}
